@@ -12,20 +12,23 @@
             background: #1e1e1e;
             color: #ffffff;
             text-align: center;
-            overflow: hidden;
         }
 
-        #first-page {
+        #first-page, #second-page {
             padding: 20px;
             position: absolute;
             width: 100%;
-            height: 100%;
+            min-height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            overflow-y: auto;
+        }
+
+        #first-page {
             background: linear-gradient(to bottom right, #ff6f91, #ff9671);
-        }jhy
+        }
 
         #first-page h1 {
             font-size: 3em;
@@ -59,17 +62,13 @@
 
         #second-page {
             display: none;
-            padding: 20px;
-            position: relative;
-            width: 100%;
-            height: 100%;
             background: linear-gradient(to bottom right, #6a11cb, #fc2598);
         }
 
         #second-page h1 {
             font-size: 4em;
             margin-top: 50px;
-            animation: fadeIn 2s forwards;
+            animation: bounce 2s infinite;
         }
 
         .gif {
@@ -134,13 +133,60 @@
                 background-position: 0 0;
             }
         }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            #first-page h1 {
+                font-size: 2em;
+            }
+
+            #birthday-input {
+                font-size: 1.2em;
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 1.2em;
+            }
+
+            #second-page h1 {
+                font-size: 2.5em;
+            }
+
+            .gif img {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #first-page h1 {
+                font-size: 1.5em;
+            }
+
+            #birthday-input {
+                font-size: 1em;
+            }
+
+            button {
+                padding: 8px 15px;
+                font-size: 1em;
+            }
+
+            #second-page h1 {
+                font-size: 2em;
+            }
+
+            .gif img {
+                width: 150px;
+            }
+        }
     </style>
 </head>
 <body>
     <div id="first-page">
-        <h1>ammu tumera birthday date dalo </h1>
-        <input type="date" id="birthday-input">
-        <button onclick="goToSecondPage()">yaha click karo chand </button>
+        <h1>ammu tumera birthday date dalo</h1>
+        <input type="text" id="birthday-input" placeholder="DDMMYYYY">
+        <button onclick="goToSecondPage()">yaha click karo chand</button>
     </div>
 
     <div id="second-page">
@@ -161,7 +207,7 @@
     <script>
         function goToSecondPage() {
             const birthdayInput = document.getElementById('birthday-input').value;
-            const correctBirthday = '2007-07-28'; // Correct birthday date
+            const correctBirthday = '28072007'; // Correct birthday date
 
             if (birthdayInput === correctBirthday) {
                 document.getElementById('first-page').style.display = 'none';
