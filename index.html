@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1e1e1e;
+            color: #ffffff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #first-page {
+            padding: 20px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom right, #ff6f91, #ff9671);
+        }jhy
+
+        #first-page h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        #birthday-input {
+            margin: 20px 0;
+            padding: 10px;
+            font-size: 1.5em;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            background-color: #ff4081;
+            color: rgb(11, 0, 0);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #f50057;
+        }
+
+        #second-page {
+            display: none;
+            padding: 20px;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, #6a11cb, #fc2598);
+        }
+
+        #second-page h1 {
+            font-size: 4em;
+            margin-top: 50px;
+            animation: fadeIn 2s forwards;
+        }
+
+        .gif {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .gif img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .fireworks, .balloons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .fireworks {
+            background: url('fireworks.gif') no-repeat center center;
+            background-size: cover;
+        }
+
+        .balloons {
+            background: url('balloons.gif') no-repeat center center;
+            background-size: cover;
+            animation: balloonsUp 10s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes balloonsUp {
+            0% {
+                background-position: 0 100%;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="first-page">
+        <h1>ammu tumera birthday date dalo </h1>
+        <input type="date" id="birthday-input">
+        <button onclick="goToSecondPage()">yaha click karo chand </button>
+    </div>
+
+    <div id="second-page">
+        <h1 id="birthday-wish">Happy 17th Birthday my love khatija!</h1>
+        <p>Wishing you a wonderful day filled with joy and love.</p>
+        <p>your my soul, waqas always loves you infinite khatija muuuhhhh!</p>
+        <p>dont forget im always with you meri jaan ,</p>
+        <p>mera first wedsite motu tumeane wish karne waste banaya so heheheeh awwwwwwwwhhhh once again happy born day moti</p>
+
+        <div class="gif">
+            <img src="kubra.gif" alt="Birthday GIF">
+        </div>
+        <audio id="birthday-song" src="audio born day.mp4" autoplay></audio>
+        <div class="fireworks"></div>
+        <div class="balloons"></div>
+    </div>
+
+    <script>
+        function goToSecondPage() {
+            const birthdayInput = document.getElementById('birthday-input').value;
+            const correctBirthday = '2007-07-28'; // Correct birthday date
+
+            if (birthdayInput === correctBirthday) {
+                document.getElementById('first-page').style.display = 'none';
+                document.getElementById('second-page').style.display = 'block';
+
+                const audio = document.getElementById('birthday-song');
+                audio.play();
+            } else {
+                alert('Incorrect date. Please enter the correct birthday.');
+            }
+        }
+    </script>
+</body>
+</html>
